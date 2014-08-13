@@ -1,0 +1,9 @@
+D:\IDCollector\IDCollector\IDCollector\bin\Debug\IDCollector.exe.config
+D:\IDCollector\IDCollector\IDCollector\bin\Debug\IDCollector.exe
+D:\IDCollector\IDCollector\IDCollector\bin\Debug\IDCollector.pdb
+D:\IDCollector\IDCollector\IDCollector\obj\Debug\IDCollector.csprojResolveAssemblyReference.cache
+D:\IDCollector\IDCollector\IDCollector\obj\Debug\IDCollector.IDCollectorWindow.resources
+D:\IDCollector\IDCollector\IDCollector\obj\Debug\IDCollector.Properties.Resources.resources
+D:\IDCollector\IDCollector\IDCollector\obj\Debug\IDCollector.csproj.GenerateResource.Cache
+D:\IDCollector\IDCollector\IDCollector\obj\Debug\IDCollector.exe
+D:\IDCollector\IDCollector\IDCollector\obj\Debug\IDCollector.pdb
