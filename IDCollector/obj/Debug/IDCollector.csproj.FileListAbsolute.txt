@@ -7,3 +7,11 @@ D:\IDCollector\IDCollector\IDCollector\obj\Debug\IDCollector.Properties.Resource
 D:\IDCollector\IDCollector\IDCollector\obj\Debug\IDCollector.csproj.GenerateResource.Cache
 D:\IDCollector\IDCollector\IDCollector\obj\Debug\IDCollector.exe
 D:\IDCollector\IDCollector\IDCollector\obj\Debug\IDCollector.pdb
+D:\IDCollector\IDCollector\IDCollector\obj\Debug\IDCollector.csproj.ResolveComReference.cache
+D:\IDCollector\IDCollector\IDCollector\bin\Debug\Spire.Doc.dll
+D:\IDCollector\IDCollector\IDCollector\bin\Debug\Spire.XLS.dll
+D:\IDCollector\IDCollector\IDCollector\bin\Debug\Spire.License.dll
+D:\IDCollector\IDCollector\IDCollector\bin\Debug\Spire.Pdf.dll
+D:\IDCollector\IDCollector\IDCollector\bin\Debug\Spire.Doc.xml
+D:\IDCollector\IDCollector\IDCollector\bin\Debug\Spire.XLS.xml
+D:\IDCollector\IDCollector\IDCollector\bin\Debug\Spire.Pdf.xml
