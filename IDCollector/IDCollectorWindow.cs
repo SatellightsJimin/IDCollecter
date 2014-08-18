@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,181 +17,228 @@ using Spire.Doc;
 using Spire.Xls;
 
 
+
 namespace IDCollector
 {
+    public delegate void FindFilesDelegate(string sDir);
+   
     public partial class IDCollectorWindow : Form
     {
+        List<FilesPathAndID> filesPathAndIdList;
+
         StringBuilder IdStrings;
         string path = @"c:\";
-
-
         //정규식
         //1. 하이픈 있음
-        string patternHyphen = "[0-9]{2}(0[1-9]|1[012])(0[1-9]|1[0-9]|2[0-9]|3[01])-[012349][0-9]{6}";
+        string patternHyphen = "[0-9]{2}(0[1-9]|1[012])(0[1-9]|1[0-9]|2[0-9]|3[01])-?[1234][0-9]{6}";
         //2 하이픈 없음
-        string patternNoHyphen = "[0-9]{2}(0[1-9]|1[012])(0[1-9]|1[0-9]|2[0-9]|3[01])[012349][0-9]{6}";
-
+       // string patternNoHyphen = "[0-9]{2}(0[1-9]|1[012])(0[1-9]|1[0-9]|2[0-9]|3[01])[012349][0-9]{6}";
+        
+        
         public delegate void _AddList(string f);
+
+
+
 
         public IDCollectorWindow()
         {
             InitializeComponent();
             folderLbl.Text = @"c:\";
-            ColumnHeader pathHeader = new ColumnHeader();   // 헤더 생성
-            pathHeader.Text = "파일주소";     // 헤더에 들어갈 텍스트
-            pathHeader.Width = 300;
-            pathHeader.AutoResize(ColumnHeaderAutoResizeStyle.ColumnContent);
-
-            resultListView.Columns.Add(pathHeader);  //  ListView에 헤더컬럼 추가
-
-            ColumnHeader idHeader = new ColumnHeader();   // 헤더 생성
-            idHeader.Text = "주민등록번호";     // 헤더에 들어갈 텍스트
-            idHeader.Width = 300;
-            idHeader.AutoResize(ColumnHeaderAutoResizeStyle.ColumnContent);
-            resultListView.Columns.Add(idHeader);  //  ListView에 헤더컬럼 추가
 
             mainGridView.Columns[2].FillWeight = 200;
             mainGridView.Columns[1].FillWeight = 400;
             mainGridView.Columns[0].FillWeight = 50;
 
-
-
+            
+            
         }
 
-        private void testerBtn_Click(object sender, EventArgs e)
+        private async void testerBtn_Click(object sender, EventArgs e)
         {
 
-            resultListView.Items.Clear();
-
+            mainGridView.RowCount = 1;
+            mainGridView.Rows.Clear();
+            int rowIdx = 0;
+            filesPathAndIdList= new List<FilesPathAndID>();
 
             button4.Enabled = false;
+            findBtn.Enabled = false;
             folderLbl.Text = "Searching...";
             this.Cursor = Cursors.WaitCursor;
 
-            System.Windows.Forms.Application.DoEvents();
 
-            FindFiles(path, (Button)sender);
+            System.Windows.Forms.Application.DoEvents();
+            var FindFilesTask = System.Threading.Tasks.Task.Run(() => FindFiles(path));
+            
+            //var SearchingText = System.Threading.Tasks.Task.Run(() => searching_Text());
+            //await SearchingText;
+
+            await FindFilesTask;
+
+            foreach (FilesPathAndID fi in filesPathAndIdList)
+            {
+               
+                //dgvcbc.Items.AddRange(fi.ID.ToArray<string>());
+           
+                mainGridView.Rows.Add(false,fi.FilesPath);
+                DataGridViewComboBoxCell dgvcbc = mainGridView["foundIdColumn",rowIdx] as DataGridViewComboBoxCell;
+                dgvcbc.DataSource = fi.ID.ToArray<string>();
+                rowIdx++;
+                
+            }
+
 
             MessageBox.Show("검색이 완료되었습니다");
             folderLbl.Text = path;
             this.Cursor = Cursors.Default;
 
+            findBtn.Enabled = true;
             button4.Enabled = true;
         }
 
-        private void FindFiles(string sDir, Button sender)
+        private void SetTextCallBack(string s)
+        {
+            this.consoleTextBox.Text = s + "\n";
+        }
+        private void FindFiles(string sDir)
         {
             string fileContents = null; //문서가 가지고 있는 내용
-            try
+            List<string> idList=null;
+            IdStrings = new StringBuilder();
+            Spire.Doc.Documents.TextSelection[] collectedId = null;
+
+            foreach (string filePath in Directory.GetFileSystemEntries(sDir, "*.*")
+                .Where(file => System.IO.Path.GetExtension(file).ToLower().Equals(".txt")
+                    || System.IO.Path.GetExtension(file).ToLower().Equals(".doc")
+                    || System.IO.Path.GetExtension(file).ToLower().Equals(".docx")
+                    || System.IO.Path.GetExtension(file).ToLower().Equals(".xls")
+                    || System.IO.Path.GetExtension(file).ToLower().Equals(".xlsx")))
             {
-                foreach (string filePath in Directory.GetFileSystemEntries(sDir, "*.*").Where(file => System.IO.Path.GetExtension(file).ToLower().Equals(".txt") || System.IO.Path.GetExtension(file).ToLower().Equals(".doc")
-                        || System.IO.Path.GetExtension(file).ToLower().Equals(".docx") || System.IO.Path.GetExtension(file).ToLower().Equals(".xls")
-                        || System.IO.Path.GetExtension(file).ToLower().Equals(".xlsx")))
+
+
+
+                this.Invoke(new MethodInvoker(delegate()
                 {
-                    Console.WriteLine(filePath);
+                    consoleTextBox.Text = filePath;
+                }));
+
+                try
+                {
+         
                     switch (System.IO.Path.GetExtension(filePath))
                     {
                         case ".txt":
+                            idList = new List<string>();
                             fileContents = File.ReadAllText(filePath);
-
+                            foreach (Match s in Regex.Matches(fileContents, patternHyphen))
+                            {
+                                if (isId(s.Value.ToString()))
+                                {
+                                    IdStrings.Append(s.ToString() + " ");
+                                    idList.Add(s.ToString());
+                                }
+                            }
+                            //foreach (Match s in Regex.Matches(fileContents, patternNoHyphen))
+                            //{
+                            //    if (isId(s.ToString()))
+                            //        IdStrings.Append(s.ToString() + " ");
+                            //}
                             break;
 
                         case ".doc":
                         case ".docx":
+                            idList = new List<string>();
+                            Spire.Doc.Document document = new Spire.Doc.Document();
+                            document.LoadFromFile(filePath);
+                            collectedId = document.FindAllPattern(new Regex(patternHyphen));
+                            foreach (Spire.Doc.Documents.TextSelection s in collectedId)
+                            {
+                                if (isId(s.SelectedText.ToString()))
+                                {
+                                    IdStrings.Append(s.SelectedText.ToString() + " ");
+                                    idList.Add(s.SelectedText.ToString());
+                                }
+                            }
+
+                            //collectedId = document.FindAllPattern(new Regex(patternNoHyphen));
+                            //foreach (Spire.Doc.Documents.TextSelection s in collectedId)
+                            //{
+                            //    if (isId(s.SelectedText.ToString()))
+                            //        IdStrings.Append(s.SelectedText.ToString() + " ");
+                            //}
+                            break;
                         case ".xls":
                         case ".xlsx":
+                            idList = new List<string>();
+                            string plainText = "";
+                            Workbook workbook = new Workbook();
 
-                            fileContents = GetDocumentPlainText(sDir, filePath);
+                            //load a workbook
+                            workbook.LoadFromFile(filePath);
 
-                            break;
-
-                    }
-                    switch (sender.Name)
-                    {
-                        case "allCases": // -가 있거나 없는 모든 주민번호
-                            if (Regex.IsMatch(fileContents, patternHyphen) || Regex.IsMatch(fileContents, patternNoHyphen))
+                            for (int i = 0; i < workbook.Worksheets.Count; i++)
                             {
-                                IdStrings = new StringBuilder();
-                                foreach (var s in Regex.Matches(fileContents, patternHyphen))
+              
+                                Worksheet sheet = workbook.Worksheets[i];
+
+
+                                if (!sheet.IsEmpty)
                                 {
-                                    if (isId(s.ToString()))
-                                        IdStrings.Append(s.ToString() + " ");
+                                    if (System.IO.File.Exists("temp"))
+                                    {
+                                        System.IO.File.Delete("temp");
+                                    }
+                                    sheet.SaveToFile("temp", ", ", Encoding.UTF8);
+                                    plainText += System.IO.File.ReadAllText("temp");
+                                    plainText += "\r\n";
                                 }
-                                foreach (var s in Regex.Matches(fileContents, patternNoHyphen))
+                                
+                            }
+                            foreach (Match s in Regex.Matches(plainText, patternHyphen))
+                            {
+                                if (isId(s.Value.ToString()))
                                 {
-                                    if (isId(s.ToString()))
-                                        IdStrings.Append(s.ToString() + " ");
-                                }
-                                if (!(IdStrings.Length == 0))
-                                {
-                                    ListViewItem listItem = new ListViewItem(filePath);
-                                    listItem.SubItems.Add(IdStrings.ToString());
-                                    resultListView.Items.Add(listItem);
-                                    //resultListView.Items.Add(f + "   주민번호 : " + IdStrings.ToString());
+                                    IdStrings.Append(s.ToString() + " ");
+                                    idList.Add(s.ToString());
                                 }
                             }
-                            break;
-                        case "noHyphen": //하이픈 없는것
-                            if (Regex.IsMatch(fileContents, patternNoHyphen))
-                            {
-                                IdStrings = new StringBuilder();
-                                foreach (var s in Regex.Matches(fileContents, patternNoHyphen))
-                                {
-                                    if (isId(s.ToString()))
-                                        IdStrings.Append(s.ToString() + " ");
-                                }
-                                if (!(IdStrings.Length == 0))
-                                {
-                                    ListViewItem listItem = new ListViewItem(filePath);
-                                    listItem.SubItems.Add(IdStrings.ToString());
-                                    resultListView.Items.Add(listItem);
-                                }
-                            }
-
-                            break;
-                        case "onlyHyphen": //하이픈 있는것만.
-                            if (Regex.IsMatch(fileContents, patternHyphen))
-                            {
-                                IdStrings = new StringBuilder();
-                                foreach (var s in Regex.Matches(fileContents, patternHyphen))
-                                {
-                                    if (isId(s.ToString()))
-                                        IdStrings.Append(s.ToString() + " ");
-                                }
-                                if (!(IdStrings.Length == 0))
-                                {
-                                    ListViewItem listItem = new ListViewItem(filePath);
-                                    listItem.SubItems.Add(IdStrings.ToString());
-                                    resultListView.Items.Add(listItem);
-                                }
-                            }
-
+                            System.IO.File.Delete("temp");
+                            //foreach (Match s in Regex.Matches(plainText, patternNoHyphen))
+                            //{
+                            //    if (isId(s.Value.ToString()))
+                            //        IdStrings.Append(s.ToString() + " ");
+                            //}
                             break;
                     }
                 }
+                catch
+                {
+                }
 
 
+                if (idList.Count != 0)
+                {
+                    //resultListView.Items.Add(f + "   주민번호 : " + IdStrings.ToString());
+                    filesPathAndIdList.Add(new FilesPathAndID(filePath, idList));
+                    
+                }
 
-            }
-            catch
-            {
             }
 
             if ((File.GetAttributes(sDir) & FileAttributes.ReparsePoint) != FileAttributes.ReparsePoint)
             {
                 foreach (string d in Directory.GetDirectories(sDir))
                 {
-                    FindFiles(d, sender);
+                    try
+                    {
+                        FindFiles(d);
+                    }
+                    catch
+                    {
+                    }
                 }
             }
 
-
-
-        }
-
-        private void AddList(string f)
-        {
-            this.resultListView.Items.Add(f);
         }
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -212,19 +260,23 @@ namespace IDCollector
         //올바른 주민번호 판별 로직.
         private bool isId(string _id)
         {
+            string ID = _id.Replace("-", "");
             int[] id = new int[13];
             int idx = 0;
             int key = 2;
             int result = 0;
-            foreach (char s in _id)
+            foreach (char s in ID)
             {
-
-                if (!s.Equals('-'))
-                {
-                    id[idx] = Convert.ToInt32(s.ToString());
-                    idx++;
+                id[idx] = Convert.ToInt32(s.ToString());
+                idx++;
+            }
+            //2000년대생 판별
+            if (id[6] == 3 || id[6] == 4)
+            {
+                int birthDay = Convert.ToInt32(ID.Substring(0, 6));
+                if(birthDay > Convert.ToInt32(DateTime.Now.ToString("yymmdd"))){
+                    return false;
                 }
-
             }
             for (int i = 0; i < 12; i++)
             {
@@ -242,57 +294,8 @@ namespace IDCollector
             return false;
         }
 
-        public string GetDocumentPlainText(string dir, string _fileName)
-        {
-            string plainText = string.Empty;
-            string ext = System.IO.Path.GetExtension(_fileName);
 
-            if (ext.Equals(".docx") || ext.Equals(".doc"))
-            {
-                //Create word document
-                Spire.Doc.Document document = new Spire.Doc.Document();
 
-                //load a document
-
-                try
-                {
-                    document.LoadFromFile(_fileName);
-                    plainText = document.GetText();
-                }
-                catch
-                {
-                }
-            }
-            else if (ext.Equals(".xlsx") || ext.Equals(".xls"))
-            {
-
-                Console.WriteLine(_fileName + "~~~ ");
-                //Create Excel workbook
-                Workbook workbook = new Workbook();
-
-                //load a workbook
-                workbook.LoadFromFile(_fileName);
-
-                for (int i = 0; i < workbook.Worksheets.Count; i++)
-                {
-                    string tmpfilename = "tempSheet" + i.ToString() + ".txt";
-                    Worksheet sheet = workbook.Worksheets[i];
-                    if (!sheet.IsEmpty)
-                    {
-                        if (System.IO.File.Exists(dir + tmpfilename))
-                        {
-                            System.IO.File.Delete(dir + tmpfilename);
-                        }
-                        sheet.SaveToFile(tmpfilename, ", ", Encoding.UTF8);
-                        plainText += "--[" + sheet.Name + "]--\r\n";
-                        plainText += System.IO.File.ReadAllText(tmpfilename);
-                        plainText += "\r\n";
-                    }
-                }
-            }
-
-            return plainText;
-        }
 
         private void resultListView_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -302,12 +305,33 @@ namespace IDCollector
         private void OpenExplorer(object sender, EventArgs e)
         {
 
-            string path = System.IO.Path.GetDirectoryName(resultListView.SelectedItems[0].Text.ToString());
-            Console.WriteLine(path);
-            Process.Start(path);
+            //string path = System.IO.Path.GetDirectoryName(resultListView.SelectedItems[0].Text.ToString());
+            //Console.WriteLine(path);
+            //Process.Start(path);
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            idListView.Clear();
+            foreach (string s in filesPathAndIdList[e.RowIndex].ID)
+            {
+                idListView.Items.Add(s);
+            }
+            mainGridView.Refresh();
+            switch(e.ColumnIndex){
+                case 3:
+                    string path = System.IO.Path.GetDirectoryName(mainGridView["filePathColumn",e.RowIndex].Value.ToString());
+                    Process.Start(path);
+                    break;
+            }  
+        
+        }
+        private void FolderOpenClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

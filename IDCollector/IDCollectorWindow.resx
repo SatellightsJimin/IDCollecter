@@ -173,28 +173,28 @@
   <data name="&gt;&gt;button4.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="allCases.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="findBtn.Location" type="System.Drawing.Point, System.Drawing">
     <value>491, 5</value>
   </data>
-  <data name="allCases.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="findBtn.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
   </data>
-  <data name="allCases.TabIndex" type="System.Int32, mscorlib">
+  <data name="findBtn.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="allCases.Text" xml:space="preserve">
-    <value>모두찾기</value>
+  <data name="findBtn.Text" xml:space="preserve">
+    <value>찾기</value>
   </data>
-  <data name="&gt;&gt;allCases.Name" xml:space="preserve">
-    <value>allCases</value>
+  <data name="&gt;&gt;findBtn.Name" xml:space="preserve">
+    <value>findBtn</value>
   </data>
-  <data name="&gt;&gt;allCases.Type" xml:space="preserve">
+  <data name="&gt;&gt;findBtn.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;allCases.Parent" xml:space="preserve">
+  <data name="&gt;&gt;findBtn.Parent" xml:space="preserve">
     <value>panel1</value>
   </data>
-  <data name="&gt;&gt;allCases.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;findBtn.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
@@ -208,7 +208,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>934, 33</value>
+    <value>933, 30</value>
   </data>
   <data name="panel1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -225,95 +225,44 @@
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="resultListView.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 33</value>
+  <data name="idListView.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
-  <data name="resultListView.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="idListView.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="idListView.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="resultListView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>934, 258</value>
+  <data name="idListView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>933, 114</value>
   </data>
-  <data name="resultListView.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="idListView.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
   </data>
-  <data name="&gt;&gt;resultListView.Name" xml:space="preserve">
-    <value>resultListView</value>
+  <data name="&gt;&gt;idListView.Name" xml:space="preserve">
+    <value>idListView</value>
   </data>
-  <data name="&gt;&gt;resultListView.Type" xml:space="preserve">
+  <data name="&gt;&gt;idListView.Type" xml:space="preserve">
     <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;resultListView.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;resultListView.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="deleteFile.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="deleteFile.Location" type="System.Drawing.Point, System.Drawing">
-    <value>394, 8</value>
-  </data>
-  <data name="deleteFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="deleteFile.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="deleteFile.Text" xml:space="preserve">
-    <value>파일삭제</value>
-  </data>
-  <data name="&gt;&gt;deleteFile.Name" xml:space="preserve">
-    <value>deleteFile</value>
-  </data>
-  <data name="&gt;&gt;deleteFile.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;deleteFile.Parent" xml:space="preserve">
+  <data name="&gt;&gt;idListView.Parent" xml:space="preserve">
     <value>panel2</value>
   </data>
-  <data name="&gt;&gt;deleteFile.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;idListView.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="onlyHyphen.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="onlyHyphen.Location" type="System.Drawing.Point, System.Drawing">
-    <value>491, 8</value>
-  </data>
-  <data name="onlyHyphen.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="onlyHyphen.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="onlyHyphen.Text" xml:space="preserve">
-    <value>하이픈O</value>
-  </data>
-  <data name="&gt;&gt;onlyHyphen.Name" xml:space="preserve">
-    <value>onlyHyphen</value>
-  </data>
-  <data name="&gt;&gt;onlyHyphen.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;onlyHyphen.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;onlyHyphen.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="panel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
   <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 671</value>
+    <value>0, 302</value>
   </data>
   <data name="panel2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>934, 41</value>
+    <value>933, 114</value>
   </data>
   <data name="panel2.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -328,7 +277,7 @@
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <metadata name="checkFile.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -370,7 +319,7 @@
     <value>Fill</value>
   </data>
   <data name="mainGridView.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 309</value>
+    <value>0, 30</value>
   </data>
   <data name="mainGridView.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -379,7 +328,7 @@
     <value>Vertical</value>
   </data>
   <data name="mainGridView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>934, 362</value>
+    <value>933, 243</value>
   </data>
   <data name="mainGridView.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -394,7 +343,82 @@
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;mainGridView.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="deleteFile.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="deleteFile.Location" type="System.Drawing.Point, System.Drawing">
+    <value>409, 3</value>
+  </data>
+  <data name="deleteFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="deleteFile.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="deleteFile.Text" xml:space="preserve">
+    <value>파일삭제</value>
+  </data>
+  <data name="&gt;&gt;deleteFile.Name" xml:space="preserve">
+    <value>deleteFile</value>
+  </data>
+  <data name="&gt;&gt;deleteFile.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;deleteFile.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;deleteFile.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="panel3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="panel3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 419</value>
+  </data>
+  <data name="panel3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>927, 247</value>
+  </data>
+  <data name="panel3.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;panel3.Name" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;panel3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel3.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;panel3.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="consoleTextBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="consoleTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 276</value>
+  </data>
+  <data name="consoleTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>927, 21</value>
+  </data>
+  <data name="consoleTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;consoleTextBox.Name" xml:space="preserve">
+    <value>consoleTextBox</value>
+  </data>
+  <data name="&gt;&gt;consoleTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;consoleTextBox.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;consoleTextBox.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="tableLayoutPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -403,10 +427,10 @@
     <value>0, 0</value>
   </data>
   <data name="tableLayoutPanel1.RowCount" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>934, 712</value>
+    <value>933, 456</value>
   </data>
   <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -424,7 +448,7 @@
     <value>0</value>
   </data>
   <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="panel1" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="resultListView" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel2" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="mainGridView" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,50" /&gt;&lt;Rows Styles="Percent,10.75949,Percent,89.24051,Absolute,362,Absolute,40,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="panel1" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel2" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="mainGridView" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel3" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="consoleTextBox" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="Absolute,30,Absolute,243,Absolute,29,Absolute,114,Absolute,253,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <metadata name="folderBrowserDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -436,16 +460,10 @@
     <value>7, 12</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>934, 712</value>
+    <value>933, 456</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Form1</value>
-  </data>
-  <data name="&gt;&gt;folderBrowserDialog1.Name" xml:space="preserve">
-    <value>folderBrowserDialog1</value>
-  </data>
-  <data name="&gt;&gt;folderBrowserDialog1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FolderBrowserDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;checkFile.Name" xml:space="preserve">
     <value>checkFile</value>
@@ -482,6 +500,12 @@
   </data>
   <data name="&gt;&gt;deleteFileColumn.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewButtonColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;folderBrowserDialog1.Name" xml:space="preserve">
+    <value>folderBrowserDialog1</value>
+  </data>
+  <data name="&gt;&gt;folderBrowserDialog1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FolderBrowserDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>IDCollectorWindow</value>
