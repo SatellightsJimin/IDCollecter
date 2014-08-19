@@ -84,7 +84,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FilesPathAndID.cs" />
-    <Compile Include="FindFiles.cs" />
     <Compile Include="IDCollectorWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,18 +91,9 @@
       <DependentUpon>IDCollectorWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
-    <Compile Include="ProgressDial.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ProgressDial.Designer.cs">
-      <DependentUpon>ProgressDial.cs</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="IDCollectorWindow.resx">
       <DependentUpon>IDCollectorWindow.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ProgressDial.resx">
-      <DependentUpon>ProgressDial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
