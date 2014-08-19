@@ -26,7 +26,6 @@ namespace IDCollector
     
     public partial class IDCollectorWindow : Form
     {
-        CancellationTokenSource cts; //AsyncTask 중단용
 
         #region "변수 선언 및 조건 초기화"
         List<FilesPathAndID> filesPathAndIdList;
@@ -441,16 +440,6 @@ namespace IDCollector
             }
         }
         #endregion
-
-        private void cancelBtn_Click(object sender, EventArgs e)
-        {
-            if (cts != null)
-            {
-                cts.Cancel();
-            }
-        }
-
-
 
     }
 

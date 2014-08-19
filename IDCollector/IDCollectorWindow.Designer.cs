@@ -31,6 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IDCollectorWindow));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.mainGridView = new System.Windows.Forms.DataGridView();
+            this.checkFile = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.filePathColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.folderOpenButtonColumn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.fileOpenColumn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.deleteFileColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.deleteAllFile = new System.Windows.Forms.Button();
             this.deselectBtn = new System.Windows.Forms.Button();
@@ -44,11 +49,6 @@
             this.idListView = new System.Windows.Forms.ListView();
             this.consoleTextBox = new System.Windows.Forms.TextBox();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.checkFile = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.filePathColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.folderOpenButtonColumn = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.fileOpenColumn = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.deleteFileColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainGridView)).BeginInit();
             this.panel3.SuspendLayout();
@@ -85,6 +85,41 @@
             this.mainGridView.RowHeadersVisible = false;
             this.mainGridView.RowTemplate.Height = 23;
             this.mainGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.mainGridView_CellClick);
+            // 
+            // checkFile
+            // 
+            this.checkFile.FalseValue = "false";
+            resources.ApplyResources(this.checkFile, "checkFile");
+            this.checkFile.Name = "checkFile";
+            this.checkFile.TrueValue = "true";
+            // 
+            // filePathColumn
+            // 
+            this.filePathColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            resources.ApplyResources(this.filePathColumn, "filePathColumn");
+            this.filePathColumn.Name = "filePathColumn";
+            this.filePathColumn.ReadOnly = true;
+            // 
+            // folderOpenButtonColumn
+            // 
+            resources.ApplyResources(this.folderOpenButtonColumn, "folderOpenButtonColumn");
+            this.folderOpenButtonColumn.Name = "folderOpenButtonColumn";
+            this.folderOpenButtonColumn.Text = "폴더열기";
+            this.folderOpenButtonColumn.UseColumnTextForButtonValue = true;
+            // 
+            // fileOpenColumn
+            // 
+            resources.ApplyResources(this.fileOpenColumn, "fileOpenColumn");
+            this.fileOpenColumn.Name = "fileOpenColumn";
+            this.fileOpenColumn.Text = "파일열기";
+            this.fileOpenColumn.UseColumnTextForButtonValue = true;
+            // 
+            // deleteFileColumn
+            // 
+            resources.ApplyResources(this.deleteFileColumn, "deleteFileColumn");
+            this.deleteFileColumn.Name = "deleteFileColumn";
+            this.deleteFileColumn.Text = "삭제";
+            this.deleteFileColumn.UseColumnTextForButtonValue = true;
             // 
             // panel3
             // 
@@ -167,41 +202,6 @@
             resources.ApplyResources(this.consoleTextBox, "consoleTextBox");
             this.consoleTextBox.Name = "consoleTextBox";
             this.consoleTextBox.ReadOnly = true;
-            // 
-            // checkFile
-            // 
-            this.checkFile.FalseValue = "false";
-            resources.ApplyResources(this.checkFile, "checkFile");
-            this.checkFile.Name = "checkFile";
-            this.checkFile.TrueValue = "true";
-            // 
-            // filePathColumn
-            // 
-            this.filePathColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            resources.ApplyResources(this.filePathColumn, "filePathColumn");
-            this.filePathColumn.Name = "filePathColumn";
-            this.filePathColumn.ReadOnly = true;
-            // 
-            // folderOpenButtonColumn
-            // 
-            resources.ApplyResources(this.folderOpenButtonColumn, "folderOpenButtonColumn");
-            this.folderOpenButtonColumn.Name = "folderOpenButtonColumn";
-            this.folderOpenButtonColumn.Text = "폴더열기";
-            this.folderOpenButtonColumn.UseColumnTextForButtonValue = true;
-            // 
-            // fileOpenColumn
-            // 
-            resources.ApplyResources(this.fileOpenColumn, "fileOpenColumn");
-            this.fileOpenColumn.Name = "fileOpenColumn";
-            this.fileOpenColumn.Text = "파일열기";
-            this.fileOpenColumn.UseColumnTextForButtonValue = true;
-            // 
-            // deleteFileColumn
-            // 
-            resources.ApplyResources(this.deleteFileColumn, "deleteFileColumn");
-            this.deleteFileColumn.Name = "deleteFileColumn";
-            this.deleteFileColumn.Text = "삭제";
-            this.deleteFileColumn.UseColumnTextForButtonValue = true;
             // 
             // IDCollectorWindow
             // 
